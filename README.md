@@ -11,7 +11,6 @@ A simple URL shortener application built with Go and Gin framework.
 
 ## Installation
 
-TO DO Docker Compose File
 
 1. Clone the repository:
    ```bash
@@ -19,21 +18,23 @@ TO DO Docker Compose File
    cd url-shortener
    ```
 
-2. Install dependencies:
-   ```bash
-   go mod tidy
-   ```
+2. Copy the .env file:
+   - Copy the `.env.sample` file to `.env`:
+     ```bash
+     cp .env.sample .env
+     ```
+   - Adjust the `.env` file to suit your needs.
 
-3. Create a `.env` file in the root directory from .env.sample
+3. Start The Application using Docker Compose:
+   - Ensure you have a docker installed.
+   - Start the application using Docker Compose:
+     ```bash
+     docker-compose up -d
+     ```
+
 
 ## Usage
-
-1. Start the application:
-   ```bash
-   go run main.go
-   ```
-
-2. Use the following endpoints:
+Use the following endpoints:
 
    - **Shorten URL**: 
      - **POST** `/api/v2/url`

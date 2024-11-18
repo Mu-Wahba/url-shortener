@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # Go application service
+  app:
+    build: .
+    container_name: go-app
+    ports:
+      - "8080:8080"   
+    # environment: #Use env var here or from .env
+    #   - REDIS_HOST=redis:6379
+    #   - API_QUOTA=5
+    #   - API_LIMIT_PERIOD=3 
+    depends_on:
+      - redis  # Ensure Redis starts before the Go app
+
+  # Redis service
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - "6379:6379"  # Expose Redis port (default 6379)
+    volumes:
+      - redis_data:/data  # Persist Redis data in a volume
+
+# Volumes to persist data
+volumes:
+  redis_data:
+    driver: local
+
